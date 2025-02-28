@@ -7,18 +7,17 @@ class ModelUser():
 
         try:
             cursor = db.connection.cursor()
-            sql = 'SELECT * FROM user WHERE username = %s'
+            sql = 'SELECT * FROM user WHERE email = %s'
 
-            cursor.execute(sql, (user.username,))
+            cursor.execute(sql, (user.email,))
             row = cursor.fetchone()
-
             if row:
                 id = row[0]
-                username = row[1]
-                password = User.check_password(row[2], user.password)
-                fullname = row[3]
+                email = row[1]
+                password = User.check_password(row[3], user.password)
+                username = row[2]
 
-                user = User(id, username, password, fullname)
+                user = User(id, email, password, username)
 
                 return user
             else:
@@ -34,17 +33,17 @@ class ModelUser():
 
         try:
             cursor = db.connection.cursor()
-            sql = 'SELECT id, username, fullname FROM user WHERE id = %s'
+            sql = 'SELECT id, email, username FROM user WHERE id = %s'
 
             cursor.execute(sql, (id,))
             row = cursor.fetchone()
 
             if row:
                 id = row[0]
-                username = row[1]
-                fullname = row[2]
+                email = row[1]
+                username = row[2]
 
-                logged_user = User(id, username, None, fullname)
+                logged_user = User(id, email, None, username)
 
                 return logged_user
             else:
