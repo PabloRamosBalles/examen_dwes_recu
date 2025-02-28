@@ -12,6 +12,7 @@ class ModelUser():
             cursor.execute(sql, (user.email,))
             row = cursor.fetchone()
             if row:
+                print(row)
                 id = row[0]
                 email = row[1]
                 password = User.check_password(row[3], user.password)

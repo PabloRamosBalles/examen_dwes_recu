@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block body %}
-<h1>perfil</h1>
-<p>Bienvenido {{current_user.email}}</p>
-<button><a href="/tienda">TIENDA</a></button>
+<div class="flex flex-col gap-10">
+<h1 class="text-3xl">PERFIL</h1>
+<p class="text-5xl mx-auto">Bienvenido {{current_user.email}}</p>
+<button class="bg-slate-950 text-white py-2 px-4 w-23 cursor-pointer mx-auto"><a href="/tienda">TIENDA</a></button>
+</div>
 {% endblock %}

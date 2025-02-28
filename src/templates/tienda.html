@@ -2,11 +2,14 @@
 {% block body %}
 {% if productos %}
 {% for prod in productos %}
-    <div>
-        <h2>Producto</h2>
-        <h4>{{prod.1}}</h4>
-        <button><a href="('/comprar/'{{prod.0}})">Comprar</a></button>
+{% if prod.1 != 1 %}
+    <div class="bg-slate-500 flex p-3 my-2 w-1/6 mx-auto">
+        <div class="flex flex-col text-center  mx-auto gap-5">
+        <h4 class="bg-slate-200 py-2 px-8 text-2xl">{{prod.2}}</h4>
+        <button class="bg-green-300 py-1 px-1"><a href="/comprar/{{prod.0}}">Comprar</a></button>
+        </div>
     </div>
+{% endif %}
 {% endfor %}
 {% endif %}
 {% endblock %}

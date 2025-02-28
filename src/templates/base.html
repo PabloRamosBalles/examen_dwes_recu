@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <title>Document</title>
 </head>
 <body>
-    <nav>
+    <nav class=" bg-slate-200 p-10">
         {% if request.path in ['/', '/login', '/register'] %}
-        <div>
-            <p><a href="/login">Login</a></p>
-            <p><a href="/register">Register</a></p>
+        <div class="flex gap-10">
+            <a href="/login"> <p class="bg-slate-950 text-white py-2 px-4">Login</p></a>
+            <a href="/register" ><p class="bg-slate-950 text-white py-2 px-4">Register</p></a>
         </div>
         {% endif %}
         {% if request.path not in ['/','/login','/register'] %}
-        <div><a href="{{url_for('logout')}}">Logout</a></div>
+        <div><a href="{{url_for('logout')}}"><p class="bg-slate-950 text-white py-2 px-4 w-23">Logout</p></a></div>
+        {% endif %}
+        {% if request.path in ['/admin'] %}
+            <a href="/admin/users">Usuarios</a>
+            <a href="/add_product">Productos</a>
         {% endif %}
     </nav>
     {% block body %}

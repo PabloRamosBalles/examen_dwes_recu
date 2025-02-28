@@ -7,8 +7,10 @@ use examem_dwes_recu;
 --     username varchar(150),
 --     password varchar(255)
 -- )
+-- drop table productos;
 create table productos(
     id int unsigned auto_increment primary key,
+    comprado boolean,
     nombre varchar(100)
 );
 
