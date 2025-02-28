@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+{% if productos %}
+{% for prod in productos %}
+    <div>
+        <h2>Producto</h2>
+        <h4>{{prod.1}}</h4>
+        <button><a href="('/comprar/'{{prod.0}})">Comprar</a></button>
+    </div>
+{% endfor %}
+{% endif %}
+{% endblock %}

@@ -7,5 +7,9 @@ use examem_dwes_recu;
 --     username varchar(150),
 --     password varchar(255)
 -- )
+create table productos(
+    id int unsigned auto_increment primary key,
+    nombre varchar(100)
+);
 
-insert into user('email','password','username') values ('b', 'b', 'c');
+-- insert into user('email','password','username') values ('b', 'b', 'c');
