@@ -9,11 +9,13 @@
     <nav>
         {% if request.path in ['/', '/login', '/register'] %}
         <div>
-            <p>Login</p>
-            <p>Register</p>
+            <p><a href="/login">Login</a></p>
+            <p><a href="/register">Register</a></p>
         </div>
         {% endif %}
-        <div>Logout</div>
+        {% if request.path not in ['/','/login','/register'] %}
+        <div><a href="{{url_for('logout')}}">Logout</a></div>
+        {% endif %}
     </nav>
     {% block body %}
     {% endblock %}

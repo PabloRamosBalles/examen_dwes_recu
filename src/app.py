@@ -2,7 +2,7 @@ from flask import Flask, redirect, render_template, request, url_for
 from flask_mysqldb import MySQL
 from dotenv import load_dotenv
 from os import getenv
-from flask_login import LoginManager, current_user
+from flask_login import LoginManager, current_user, login_required, logout_user
 
 from models.entities.User import User
 from models.ModelUser import ModelUser
@@ -58,16 +58,24 @@ def register():
 
 
 @app.route('/perfil')
+@login_required
 def perfil():
     return render_template('/perfil.html')
 
 @app.route('/tienda', methods=['GET'])
+@login_required
 def tienda():
     cur = mysql.connection.cursor()
     cur.execute('select * from productos')
     productos = cur.fetchall()
     print(productos)
     return render_template('/tienda.html', productos = productos)
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 
 if __name__ == '__main__': 
     app.run(debug=True, host='0.0.0.0')
